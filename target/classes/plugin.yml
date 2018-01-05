@@ -1,0 +1,7 @@
+name: EfficientHomes
+main: org.puretie.EfficientHomes
+version: 1.0
+commands:
+  efficienthomes:
+    aliases: [ehome, eh]
+    description: does stuff.
