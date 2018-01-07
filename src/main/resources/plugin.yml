@@ -2,6 +2,9 @@ name: EfficientHomes
 main: org.puretie.EfficientHomes
 version: 1.0
 commands:
-  efficienthomes:
-    aliases: [ehome, eh]
-    description: does stuff.
+  efficienthome:
+    aliases: [ehome, eh, home]
+    description: Takes you home.
+  efficientsethome:
+    aliases: [sethome, sh]
+    description: Makes your new home!

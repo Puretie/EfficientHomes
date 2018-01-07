@@ -26,12 +26,29 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<finalName>${project.name}</finalName>
-					<outputDirectory>${development.folder}</outputDirectory>
-				</configuration>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<artifactSet>
+								<includes>
+									<include>org.cyberpwn:*</include>
+								</includes>
+							</artifactSet>
+							<relocations>
+								<relocation>
+									<pattern>org.cyberpwn.glang</pattern>
+									<shadedPattern>org.puretie.glang</shadedPattern>
+								</relocation>
+							</relocations>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -40,9 +57,18 @@
 			<id>spigot-repo</id>
 			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
 		</repository>
+		<repository>
+			<id>central</id>
+			<url>https://raw.githubusercontent.com/cyberpwnn/Central/master/</url>
+		</repository>
 	</repositories>
 	<dependencies>
-		<!--Spigot API -->
+		<dependency>
+			<groupId>org.cyberpwn</groupId>
+			<artifactId>GLang</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>

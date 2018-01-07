@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class EfficientHomes extends JavaPlugin
 {
 	public static EfficientHomes efh;
+	public static PlayerController pc;
 
 	public EfficientHomes()
 	{
@@ -18,7 +19,10 @@ public class EfficientHomes extends JavaPlugin
 	public void onEnable()
 	{
 		efh = this;
-		getCommand("efficienthomes").setExecutor(new HomeCommand());
+		pc = new PlayerController();
+		pc.start();
+		getCommand("efficienthome").setExecutor(new HomeCommand());
+		getCommand("efficientsethome").setExecutor(new SetHomeCommand());
 		try
 		{
 			ConfigManager.doFileConfiguration();
@@ -39,7 +43,7 @@ public class EfficientHomes extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
-
+		pc.stop();
 	}
 
 	@Override
