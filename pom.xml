@@ -28,6 +28,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.1.0</version>
+				<configuration>
+					<outputDirectory>${development.folder}</outputDirectory>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -67,7 +70,6 @@
 			<groupId>org.cyberpwn</groupId>
 			<artifactId>GLang</artifactId>
 			<version>1.0</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.spigotmc</groupId>

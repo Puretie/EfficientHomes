@@ -23,6 +23,8 @@ public class HomeCommand implements CommandExecutor
 				{
 					Location l = pc.getHome(pc.getHomes().get(0));
 					p.teleport(l);
+					p.sendMessage("Teleported to " + pc.getHomes().get(0));
+					p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BELL, 1f, 1f);
 
 				}
 				else if(pc.getHomeCount() == 0)
@@ -44,15 +46,32 @@ public class HomeCommand implements CommandExecutor
 				}
 				else
 				{
+					String home = null;
 					boolean found = false;
 					for(String i : pc.getHomes())
 					{
-						if(i.equalsIgnoreCase(h) || i.toLowerCase().contains(h.toLowerCase()))
+						if(i.equalsIgnoreCase(h))
 						{
 							Location l = pc.getHome(i);
 							p.teleport(l);
 							found = true;
+							home = i;
 							break;
+						}
+					}
+
+					if(!found)
+					{
+						for(String i : pc.getHomes())
+						{
+							if(i.toLowerCase().contains(h.toLowerCase()))
+							{
+								Location l = pc.getHome(i);
+								p.teleport(l);
+								found = true;
+								home = i;
+								break;
+							}
 						}
 					}
 					if(!found)
@@ -61,7 +80,7 @@ public class HomeCommand implements CommandExecutor
 					}
 					else
 					{
-						p.sendMessage("PAOW");
+						p.sendMessage("Teleported to " + home);
 						p.getWorld().playSound(p.getLocation(), Sound.BLOCK_NOTE_BELL, 1f, 1f);
 					}
 				}

@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class SetHomeCommand implements CommandExecutor
+public class HomesCommand implements CommandExecutor
 {
 
 	@Override
@@ -15,15 +15,14 @@ public class SetHomeCommand implements CommandExecutor
 		{
 			Player p = (Player) sender;
 			PlayerObject r = EfficientHomes.pc.get(p);
-			if(args.length == 1)
+			for(String s : r.getHomes())
 			{
-				r.setHome(args[0], p.getLocation());
-				sender.sendMessage("Home set!");
+				p.sendMessage(s);
 			}
 		}
 		else
 		{
-			sender.sendMessage("Filthy Console Peasant...");
+			sender.sendMessage("Consoles don't have homes.");
 		}
 		return true;
 	}

@@ -53,6 +53,7 @@ public class PlayerObject
 		FileConfiguration fc = new YamlConfiguration();
 		if(!f.exists())
 		{
+			f.getParentFile().mkdirs();
 			f.createNewFile();
 		}
 		fc.load(f);

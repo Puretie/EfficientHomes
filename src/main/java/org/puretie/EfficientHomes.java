@@ -23,6 +23,8 @@ public class EfficientHomes extends JavaPlugin
 		pc.start();
 		getCommand("efficienthome").setExecutor(new HomeCommand());
 		getCommand("efficientsethome").setExecutor(new SetHomeCommand());
+		getCommand("efficienthomes").setExecutor(new HomesCommand());
+
 		try
 		{
 			ConfigManager.doFileConfiguration();

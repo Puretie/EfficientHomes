@@ -8,3 +8,6 @@ commands:
   efficientsethome:
     aliases: [sethome, sh]
     description: Makes your new home!
+  efficienthomes:
+   aliases: [homes]
+   description: Lists homes.
